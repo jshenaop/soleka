@@ -1,4 +1,5 @@
 Made by Juan Sebastián Henao
+Email jshenaop@gmail.com
 Made for Communications’ Regulation Commission
 
 
@@ -8,12 +9,18 @@ Description: Text analysis have a great potential for Public Policy and Retrieve
 
 **SOLEKA - Version 1**
 
->[X] POST Method for send text and predict if it is for Homologación topic.
->[ ] POST Method for gender and age prediction.
->[ ] User Auth.
->[ ] Token Auth.
+- [X] POST Method for send text and predict if it is for Homologación topic.
+- [ ] POST Method for gender and age prediction.
+- [ ] User Auth.
+- [ ] Token Auth.
+
+> Analytics
+ - [X] Naive Bayes Algorithm
+ - [ ] Tree Decision Algorithm
+ - [ ] Deep Learning Algorithm
 
 **SOLEKA - Version 2**
 
+(Waiting for ideas)
 
 
