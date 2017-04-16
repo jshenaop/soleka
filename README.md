@@ -11,6 +11,7 @@ Description: Text analysis have a great potential for Public Policy and Retrieve
 
 - [X] POST Method for send text and predict if it is for Homologación topic.
 - [ ] POST Method for gender and age prediction.
+- [ ] Connect for real databases.
 - [ ] User Auth.
 - [ ] Token Auth.
 
