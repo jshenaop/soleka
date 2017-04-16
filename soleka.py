@@ -2,6 +2,7 @@
 
 from flask import Flask
 
+import config
 import models
 from resources.predictions import predictions_api
 
@@ -19,4 +20,4 @@ def hello_world():
 
 if __name__ == '__main__':
     models.initilize()
-    app.run(debug=DEBUG, host=HOST, port=PORT)
+    app.run(debug=config.DEBUG, host=config.HOST, port=config.PORT)

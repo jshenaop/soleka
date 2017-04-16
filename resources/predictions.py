@@ -29,6 +29,7 @@ class Prediction(Resource):
 
         # To use parse_args
         # args = self.reqparse.parse_args()
+        # text = args.get('text')
         # text = args['text']
 
         count = tp.word_count(text=text)

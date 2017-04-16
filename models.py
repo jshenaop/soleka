@@ -2,9 +2,21 @@
 
 import datetime
 
+from argon2 import PasswordHasher
 from peewee import *
 
 DATABASE = SqliteDatabase('soleka.sqlite')
+
+class User(Model):
+    username = CharField(unique=True)
+    email = CharField(unique=True)
+    password = CharField()
+
+    class Meta:
+        database = DATABASE
+
+    def create_user(cls, username, email, password, **kwargs):
+        email = email.lower()
 
 
 class Prediction(Model):
