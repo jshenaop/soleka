@@ -1,15 +1,17 @@
 # coding=utf8
 
 from flask import Flask
+
 import models
+from resources.predictions import predictions_api
 
 
 DEBUG = True
-HOST = '0.0.0.0'
 PORT = 8000
+HOST = '0.0.0.0'
 
 app = Flask(__name__)
-
+app.register_blueprint(predictions_api)
 
 @app.route('/')
 def hello_world():
