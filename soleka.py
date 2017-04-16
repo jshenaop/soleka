@@ -4,19 +4,15 @@ from flask import Flask
 
 import config
 import models
-from resources.predictions import predictions_api
-
-
-DEBUG = True
-PORT = 8000
-HOST = '0.0.0.0'
+from resources_v1.predictions import predictions_api_v1
 
 app = Flask(__name__)
-app.register_blueprint(predictions_api)
+app.register_blueprint(predictions_api_v1, url_prefix='/api/v1')
 
 @app.route('/')
-def hello_world():
-    return 'Hello World'
+def index():
+    return """<h1>Text predictor for Voice of the Citizen</h1>
+              <p>Instructions: make a POST request to /api/v1/prediction sending {"text": "some text"} """
 
 if __name__ == '__main__':
     models.initilize()

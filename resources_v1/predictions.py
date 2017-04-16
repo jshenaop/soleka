@@ -7,7 +7,7 @@ import models
 import analytics.topic_prediction as tp
 
 
-class Prediction(Resource):
+class Prediction_v1(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument(
@@ -36,10 +36,10 @@ class Prediction(Resource):
         return jsonify({'prediction': [{'text': text, 'word_count': count}]})
 
 
-predictions_api = Blueprint('resources.predictions', __name__)
-api = Api(predictions_api)
+predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)
+api = Api(predictions_api_v1)
 api.add_resource(
-    Prediction,
-    '/api/v1/prediction',
+    Prediction_v1,
+    '/prediction_v1',
     endpoint='prediction'
 )
