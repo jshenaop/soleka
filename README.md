@@ -1,22 +1,26 @@
 Made by Juan Sebastián Henao
 Email jshenaop@gmail.com
-Made for Colombia Comunications Comission
+Made for Communications’ Regulation Commission
 
 
-SOLEKA - Application for Text Analysis
+**SOLEKA - Application for Text Analysis**
 
-Text analysis have a great potential for Public Policy and Retrieve information.
+Description: Text analysis have a great potential for Public Policy and Retrieve information.
 
-SOLEKA
+**SOLEKA - Version 1**
 
-Version 1
+- [X] POST Method for send text and predict if it is for Homologación topic.
+- [ ] POST Method for gender and age prediction.
+- [ ] User Auth.
+- [ ] Token Auth.
 
-[X] POST Method for send text and predict if it is for Homologación topic.
-[ ] POST Method for gender and age prediction.
-[ ] User Auth.
-[ ] Token Auth.
+> Analytics
+ - [X] Naive Bayes Algorithm
+ - [ ] Tree Decision Algorithm
+ - [ ] Deep Learning Algorithm
 
-Version 2
+**SOLEKA - Version 2**
 
+(Waiting for ideas)
 
 
