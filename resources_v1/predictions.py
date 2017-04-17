@@ -33,7 +33,7 @@ class Prediction_v1(Resource):
         # text = args['text']
 
         count = tp.word_count(text=text)
-        return jsonify({'prediction': [{'text': text, 'word_count': count}]})
+        return jsonify({'prediction': [{'text': text, 'word_count': count, 'tema': 'jdidjidjid'}]})
 
 
 predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)

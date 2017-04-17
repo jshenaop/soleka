@@ -5,6 +5,7 @@ import random
 import csv
 from collections import Counter
 
+import pandas as pd
 import nltk
 from nltk import word_tokenize, WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -20,17 +21,19 @@ custom_stop_list = [
 ]
 stoplist.extend(custom_stop_list)
 
-with open('care_inbox.csv', 'rb') as csv_trainer:
-    raw_email_database = csv.reader(csv_trainer, delimiter='\t')
-    email_database = list(raw_email_database)
-    email_corpus = []
-    for email in range(200):
-        email_corpus.append(email_database[email][5])
-        emails = ', '.join(email_corpus)
+dataframe = pd.read_excel('./TRAINING_SET/training_set_homologation_brand.xlsx')
+
+text_corpus_list = []
+for text_unit in dataframe['TEXTO']:
+    text_corpus_list.append(text_unit)
+    print(text_unit)
+    corpus = ', '.join(text_corpus_list)
+    #print(text_unit)
+
 
 def preprocess(sentence):
     lemmatizer = WordNetLemmatizer()
-    return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(unicode(sentence, errors='ignore'))]
+    return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(sentence))]
 
 
 def get_features(text, setting):
@@ -39,12 +42,11 @@ def get_features(text, setting):
     else:
         return {word: True for word in preprocess(text) if not word in stoplist}
 
-
-# extract the features
-all_features = [(get_features(emails, 'bow'))]
+ # extract the features
+all_features = [(get_features(corpus, 'bow'))]
 
 print(all_features[0])
-
-with open('clasificador.csv','wb') as csv_classifier:
-    w = csv.writer(csv_classifier, delimiter='\t')
-    w.writerows(all_features[0].items())
+#
+# with open('clasificador.csv','wb') as csv_classifier:
+#     w = csv.writer(csv_classifier, delimiter='\t')
+#     w.writerows(all_features[0].items())
