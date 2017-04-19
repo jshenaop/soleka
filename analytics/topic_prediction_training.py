@@ -1,35 +1,36 @@
 # coding=utf8
 
-import os
-import random
 import csv
 from itertools import islice
 from collections import Counter
 from collections import defaultdict
 
 import pandas as pd
-import nltk
 from nltk import word_tokenize, WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk import NaiveBayesClassifier, classify
 
 csv.field_size_limit(500 * 1024 * 1024)
 
-dataframe = pd.read_excel('./TRAINING_SET/training_set_homologation_brand.xlsx')
+dataframe = pd.read_excel('./TRAINING_SET/training_topic.xlsx')
 
-""" Stop Words Module """
+""" ---------------------------------------------- Stop Words Module ----------------------------------------------"""
+
 stoplist = stopwords.words('spanish')
 custom_stop_list = [
     'margin:0px', 'padding:0px', 'body.hmmessage', 'font-size:12pt', 'font-family', 'sans-serif', '<', 'calibri'
                                                                                                        'font-face',
     'margin-bottom'
-    '--', '}', '{', '>', ',', '.', ';', ':', '@', ')', '(', '"', '--'
+    '--', '}', '{', '>', ',', '.', ';', ':', '@', ')', '(', '"', '--', '``', ''
 ]
 stoplist.extend(custom_stop_list)
 
 
+""" ----------------------------------------------- Functions Module -----------------------------------------------"""
+
 def get_corpus(dataframe):
     text_corpus = []
+
     for text_unit in dataframe['TEXTO']:
         text_corpus.append(text_unit)
         corpus = ', '.join(text_corpus)
@@ -37,6 +38,7 @@ def get_corpus(dataframe):
 
 
 def get_features(text, setting):
+
         def preprocess(text):
             lemmatizer = WordNetLemmatizer()
             return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
@@ -47,40 +49,39 @@ def get_features(text, setting):
             return {word: True for word in preprocess(text) if not word in stoplist}
 
 
-all_features = [(get_features(text, 'bow'))]
-print(all_features)
+""" ------------------------------------------------ Script Module ------------------------------------------------"""
+
+text = get_corpus(dataframe=dataframe)
+all_features = get_features(text, 'bow')
+all_features_list = []
+
+for feature in all_features:
+    all_features_list.append(feature)
 
 dictionary = lambda: defaultdict(dictionary)
-classify_dic = dictionary()
+classify_dictionary = dictionary()
+headers = ['PALABRA']
 
-for column in islice(dataframe.columns, 1, None):
-    for category in dataframe[column].unique():
+with open('./FRECUENCY_SET/topic_features.csv', 'wt', encoding="utf-8") as csv_classifier:
+    csv = csv.writer(csv_classifier, delimiter='\t')
 
-        filtered_dataframe = dataframe.loc[dataframe[column] == category]
-        text_corpus_list = []
+    for column in islice(dataframe.columns, 1, None):
+        for category in dataframe[column].unique():
 
-        for text_unit in filtered_dataframe:
-            text_corpus_list.append(text_unit)
-            corpus = ', '.join(text_corpus_list)
+            header = column + ' - ' + category
+            headers.append(header)
 
-        for feature in all_features:
-            for key in feature.keys():
-                try:
-                    value = (feature[key])
-                    classify_dic[key][column][category] = value
-                except KeyError:
-                    value = (feature[key])
-                    classify_dic[key][column][category] = value
+            filtered_dataframe = dataframe.loc[dataframe[column] == category]
 
-print(classify_dic['telefónica'])
+            filtered_text = get_corpus(dataframe=filtered_dataframe)
+            filtered_features = get_features(filtered_text, 'bow')
 
-#with open('clasificador.csv', 'wt', encoding="utf-8") as csv_classifier:
-#    csv = csv.writer(csv_classifier, delimiter='\t')
-
-#    for feature in all_features:
-#        for key in feature.keys():
-#            word = str(key)
-#            count = str(feature[key])
-#            csv.writerow([word, count])
-
-#            # f.writerow([ciudad, place['nombre'], place['horario'], place['direccion'], place['tipoCAVs']])
+            for feature in all_features:
+                    try:
+                        value = (filtered_features[feature])
+                        classify_dictionary[feature][column][category] = value
+                        csv.writerow([feature, header, value])
+                    except KeyError:
+                        value = 0
+                        classify_dictionary[feature][column][category] = value
+                        csv.writerow([feature, header, value])

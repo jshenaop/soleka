@@ -1,15 +1,24 @@
 # coding=utf8
 
-import pandas
+import csv
+
+import pandas as pd
+from nltk import word_tokenize, WordNetLemmatizer
+from nltk.corpus import stopwords
+
+""" ---------------------------------------------- Stop Words Module ----------------------------------------------"""
 
 stoplist = stopwords.words('spanish')
 custom_stop_list = [
     'margin:0px', 'padding:0px', 'body.hmmessage', 'font-size:12pt', 'font-family', 'sans-serif', '<', 'calibri'
-    'font-face', 'margin-bottom'
-    '--', '}', '{', '>', ',', '.', ';', ':','@', ')', '(', '"', '--'
+                                                                                                       'font-face',
+    'margin-bottom'
+    '--', '}', '{', '>', ',', '.', ';', ':', '@', ')', '(', '"', '--', '``', ''
 ]
 stoplist.extend(custom_stop_list)
 
+
+""" ----------------------------------------------- Functions Module -----------------------------------------------"""
 
 def identificador_tema(texto_input, diccionario_clasificador):
     diccionario = diccionario_clasificador.ix[:, 1]
@@ -47,3 +56,21 @@ def identificador_tema(texto_input, diccionario_clasificador):
     texto_tokenizado = tokenizador_texto(texto_input)
     indices = buscador_palabras(texto_tokenizado, diccionario_lista)
     conteo_tema_a, conteo_tema_b = extractor_valores_tema(indices, diccionario_clasificador, 2, 3)
+
+
+text = """
+Esto es para homologación
+"""
+
+
+def get_prediction(text, dataframe):
+
+    def preprocess(text):
+        lemmatizer = WordNetLemmatizer()
+        return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
+
+    print(dataframe.columns)
+    print(preprocess(text=text))
+
+df = pd.read_csv('FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
+get_prediction(text=text, dataframe=df)
