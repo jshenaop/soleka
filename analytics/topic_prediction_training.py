@@ -62,7 +62,7 @@ dictionary = lambda: defaultdict(dictionary)
 classify_dictionary = dictionary()
 headers = ['PALABRA']
 
-with open('./FRECUENCY_SET/topic_features.csv', 'wt', encoding="utf-8") as csv_classifier:
+with open('FRECUENCY_SET/topic_features.csv', 'wt', encoding="utf-8") as csv_classifier:
     csv = csv.writer(csv_classifier, delimiter='\t')
 
     for column in islice(dataframe.columns, 1, None):
