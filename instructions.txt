@@ -1,2 +1,23 @@
+## Install Anaconda
 curl -O https://repo.continuum.io/archive/Anaconda2-4.3.1-Linux-x86_64.sh
 bash Anaconda2-4.3.1-Linux-x86_64.sh
+
+## Create conda-virtualenv
+## https://conda.io/docs/using/envs.html
+conda create --name soleka python=3.5
+
+pip install flask
+pip install nltk
+## http://uwsgi-docs.readthedocs.io/en/latest/Install.html
+apt-get install build-essential python
+pip install uwsgi
+pip install peewee
+pip install argon2_cffi
+pip install flask_restful
+pip install pandas
+pip install xlrd
+
+
+###   Open Python
+import nltk
+nltk.download('All')
