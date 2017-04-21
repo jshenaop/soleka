@@ -37,7 +37,12 @@ class Prediction_v1(Resource):
 
         count = tp.word_count(text=text)
         subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic)
-        return jsonify({'prediction': [{'text': text, 'word_count': count, 'topic': subtopic}]})
+        print(subtopic)
+        return jsonify({'prediction': [{'text': text,
+                                        'topic': count, 'sub_topic': count, 'sub_subtopic': subtopic,
+                                        'gender': 'Experimental', 'age': 'Experimental',
+                                        'sentiment': 'Positive-Neutral-Negative'
+                                        }]})
 
 
 predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)
