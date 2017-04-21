@@ -85,4 +85,3 @@ def get_prediction(text, dataframe, prediction):
 
 df = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
 prediction = get_prediction(text=text, dataframe=df, prediction=sub_topic)
-print(prediction)
