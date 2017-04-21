@@ -77,12 +77,7 @@ def get_prediction(text, dataframe, prediction):
             except ValueError:
                 pass
         score = get_topic_score(dataframe=dataframe, indexes=indexes, column_name=category)
-        print(score)
-        print(type(score))
-
         topic_scores.append(score)
-        print(topic_scores)
-        print(type(topic_scores))
 
     return get_result(topic_scores)
 
