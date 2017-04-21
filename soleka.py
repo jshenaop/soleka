@@ -6,6 +6,7 @@ import config
 import models
 from resources_v1.predictions import predictions_api_v1
 
+
 app = Flask(__name__)
 app.register_blueprint(predictions_api_v1, url_prefix='/api/v1')
 

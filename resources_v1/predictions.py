@@ -2,6 +2,9 @@
 
 from flask import jsonify, Blueprint, request
 from flask_restful import Resource, Api, reqparse, inputs
+from analytics.topic_prediction_classification import df
+from analytics.topic_prediction_classification import sub_topic
+from analytics.topic_prediction_classification import get_prediction
 
 import models
 import analytics.topic_prediction as tp
@@ -33,7 +36,8 @@ class Prediction_v1(Resource):
         # text = args['text']
 
         count = tp.word_count(text=text)
-        return jsonify({'prediction': [{'text': text, 'word_count': count, 'tema': 'jdidjidjid'}]})
+        subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic)
+        return jsonify({'prediction': [{'text': text, 'word_count': count, 'topic': subtopic}]})
 
 
 predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)
