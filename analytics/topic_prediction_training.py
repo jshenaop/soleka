@@ -12,7 +12,7 @@ from nltk import NaiveBayesClassifier, classify
 
 csv.field_size_limit(500 * 1024 * 1024)
 
-dataframe = pd.read_excel('./TRAINING_SET/training_topic.xlsx')
+dataframe = pd.read_excel('./analytics/TRAINING_SET/training_topic.xlsx')
 
 """ ---------------------------------------------- Stop Words Module ----------------------------------------------"""
 
@@ -62,7 +62,7 @@ dictionary = lambda: defaultdict(dictionary)
 classify_dictionary = dictionary()
 headers = ['PALABRA']
 
-with open('./FRECUENCY_SET/topic_features.csv', 'wt', encoding="utf-8") as csv_classifier:
+with open('./analytics/FRECUENCY_SET/topic_features.csv', 'wt', encoding="utf-8") as csv_classifier:
     csv = csv.writer(csv_classifier, delimiter='\t')
 
     for column in islice(dataframe.columns, 1, None):
