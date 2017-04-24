@@ -1,6 +1,7 @@
 # coding=utf8
 
 import csv
+import sys
 
 import pandas as pd
 from nltk import word_tokenize, WordNetLemmatizer
@@ -51,7 +52,10 @@ age = [
 def get_prediction(text, dataframe, prediction):
     def preprocess(text):
         lemmatizer = WordNetLemmatizer()
-        return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
+        if sys.version_info[0] == 2:
+            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
+        else:
+            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(unicode(text, errors='ignore'))]
 
     def get_topic_score(dataframe, indexes, column_name):
         value = 0
