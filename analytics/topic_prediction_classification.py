@@ -53,9 +53,9 @@ def get_prediction(text, dataframe, prediction):
     def preprocess(text):
         lemmatizer = WordNetLemmatizer()
         if sys.version_info[0] == 2:
-            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
+            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(text)]
         else:
-            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(unicode(text, errors='ignore'))]
+            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
 
     def get_topic_score(dataframe, indexes, column_name):
         value = 0
