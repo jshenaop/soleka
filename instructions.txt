@@ -4,6 +4,8 @@ bash Anaconda2-4.3.1-Linux-x86_64.sh
 
 ## Create conda-virtualenv
 ## https://conda.io/docs/using/envs.html
+curl -O https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh
+bash Anaconda3-4.3.1-Linux-x86_64.sh 
 conda create --name soleka python=3.5
 
 pip install flask
@@ -24,3 +26,4 @@ nltk.download('All')
 
 http://markjberger.com/flask-with-virtualenv-uwsgi-nginx/
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04
