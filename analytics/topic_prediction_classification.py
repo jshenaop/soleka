@@ -1,5 +1,15 @@
 # coding=utf8
 
+import os
+import random
+import csv
+from collections import Counter
+
+import nltk
+from nltk import word_tokenize, WordNetLemmatizer
+from nltk.corpus import stopwords
+from nltk import NaiveBayesClassifier, classify
+
 import csv
 import sys
 
@@ -50,10 +60,11 @@ age = [
 
 
 def get_prediction(text, dataframe, prediction):
+
     def preprocess(text):
         lemmatizer = WordNetLemmatizer()
         if sys.version_info[0] == 2:
-            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(text)]
+            return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(unicode(text, errors='ignore'))]
         else:
             return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
 

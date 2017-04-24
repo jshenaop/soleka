@@ -21,3 +21,6 @@ pip install xlrd
 ###   Open Python
 import nltk
 nltk.download('All')
+
+http://markjberger.com/flask-with-virtualenv-uwsgi-nginx/
+https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
