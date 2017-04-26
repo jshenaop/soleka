@@ -2,6 +2,8 @@
 
 from flask import jsonify, Blueprint, request
 from flask_restful import Resource, Api, reqparse, inputs
+from flask_restful.utils import cors
+
 from analytics.topic_prediction_classification import df
 from analytics.topic_prediction_classification import topic, sub_topic, sub_subtopic
 from analytics.topic_prediction_classification import get_prediction
@@ -43,6 +45,9 @@ class Prediction_v1(Resource):
 
 predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)
 api = Api(predictions_api_v1)
+api.decorators = [cors.crossdomain(
+    origin="*", headers=['accept', 'Content-Type'],
+    methods=['HEAD', 'OPTIONS', 'GET', 'PUT', 'POST', 'DELETE'])]
 api.add_resource(
     Prediction_v1,
     '/prediction_v1',

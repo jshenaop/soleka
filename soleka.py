@@ -1,6 +1,7 @@
 # coding=utf8
 
 from flask import Flask
+from flask_restful.utils import cors
 
 import config
 import models
