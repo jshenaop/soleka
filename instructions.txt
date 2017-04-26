@@ -24,6 +24,25 @@ pip install xlrd
 import nltk
 nltk.download('All')
 
+sudo /etc/init.d/nginx start
+sudo rm /etc/nginx/sites-enabled/default
+sudo touch /etc/nginx/sites-available/flask-settings
+sudo ln -s /etc/nginx/sites-available/flask-settings /etc/nginx/sites-enabled/flask-settings
+sudo nano /etc/nginx/sites-available/flask-settings
+sudo /etc/init.d/nginx restart
+
+sudo pip3 install virtualenv
+sudo apt-get install python3-pip python3-dev nginx
+virtualenv solekaenv
+source solekaenv/bin/activate
+gunicorn soleka:app
+pkill gunicorn
+
+#Flask and Gunicorn
+https://realpython.com/blog/python/kickstarting-flask-on-ubuntu-setup-and-deployment/
+https://www.youtube.com/watch?v=kDRRtPO0YPA&t=297s
+
+http://stackoverflow.com/questions/28166161/nginx-gunicorn-flask-constant-500-errors-after-x-hours-of-usage
 http://markjberger.com/flask-with-virtualenv-uwsgi-nginx/
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-14-04
 https://www.digitalocean.com/community/tutorials/how-to-serve-flask-applications-with-uwsgi-and-nginx-on-ubuntu-16-04

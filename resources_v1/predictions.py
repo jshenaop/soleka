@@ -3,7 +3,7 @@
 from flask import jsonify, Blueprint, request
 from flask_restful import Resource, Api, reqparse, inputs
 from analytics.topic_prediction_classification import df
-from analytics.topic_prediction_classification import sub_topic
+from analytics.topic_prediction_classification import topic, sub_topic, sub_subtopic
 from analytics.topic_prediction_classification import get_prediction
 
 import models
@@ -30,20 +30,16 @@ class Prediction_v1(Resource):
         json_data = request.get_json(force=True)
         text = json_data['text']
 
-        # To use parse_args
-        # args = self.reqparse.parse_args()
-        # text = args.get('text')
-        # text = args['text']
-
         count = tp.word_count(text=text)
-        subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic)
-        print(subtopic)
+        prediction_topic = get_prediction(text=text, dataframe=df, prediction=topic)
+        prediction_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic)
+        prediction_sub_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_subtopic)
+
         return jsonify({'prediction': [{'text': text,
-                                        'topic': count, 'sub_topic': count, 'sub_subtopic': subtopic,
+                                        'topic': prediction_topic, 'sub_topic': prediction_subtopic, 'sub_subtopic': prediction_sub_subtopic,
                                         'gender': 'Experimental', 'age': 'Experimental',
                                         'sentiment': 'Positive-Neutral-Negative'
                                         }]})
-
 
 predictions_api_v1 = Blueprint('resources_v1.predictions', __name__)
 api = Api(predictions_api_v1)
