@@ -32,7 +32,6 @@ text = """
 
 Buenos días que pena con ustedes pero esta es la tercera vez que realizo esta solicitud, estoy tratando de solicitar la homologación de mi equipo Xiaomi mi5, me han respondido tres veces que no aparece el FCC-ID o que las imágenes del IMEI no son claras, pero cuando trato de enviar la información solicitada a la página ComplementacionHomologacion, me solicitan nuevamente todos los dato más y del celular, cuando los ingreso en las tres oportunidades me aparece el aviso de que "AL PARECER" uno de los dos IMEI estará adulterado, que me comunique con el vendedor, y no me deja continuar con el proceso de homologación, el vendedor me contesta que necesita saber cuál de los dos IMEI es el adulterado y hasta el momento no me han respondido las dos veces anteriores cuál de los dos IMEI es el adulterado con seguridad, por lo tanto les solicito que me permitan continuar con la homologación de mi equipo o me respondan cuál de los dos IMEI es el adulterado o me homologuen mi equipo
 
-
 """
 
 topic = [
@@ -40,7 +39,7 @@ topic = [
     'tematica - pqr'
 ]
 
-sub_topic = [
+sub_topic_homologacion = [
     'subtematica - aclaracion respuesta no coincide marca/modelo',
     'subtematica - formulario: al parecer cuenta con un imei alterado',
     'subtematica - bloqueo/ desbloqueo celulares',
@@ -58,12 +57,14 @@ sub_topic = [
     'subtematica - imei invalido',
     'subtematica - link de consulta tramite',
     'subtematica - nombre comercial vs modelo equipo',
-    'subtematica - peticion por formulario',
     'subtematica - problemas con el operador y ya esta homologado',
     'subtematica - realizar el tramite homologacion',
     'subtematica - sin fcc y otro certificado'
 ]
 
+sub_topic_pqr = [
+    'subtematica - peticion por formulario'
+]
 
 sub_subtopic = [
     'sub-subtematica - no aplica'
@@ -120,19 +121,22 @@ def get_prediction(text, dataframe, prediction):
         score = get_topic_score(dataframe=dataframe, indexes=indexes, column_name=category)
         topic_scores.append(score)
 
-    #print(topic_scores)
 
+# Decision tree
     if prediction == topic:
         return topic[get_result(topic_scores)]
 
-    if prediction == sub_topic:
-        return sub_topic[get_result(topic_scores)]
+    if prediction == sub_topic_homologacion:
+        return sub_topic_homologacion[get_result(topic_scores)]
+
+    if prediction == sub_topic_pqr:
+        return sub_topic_homologacion[get_result(topic_scores)]
 
     if prediction == sub_subtopic:
         return sub_subtopic[get_result(topic_scores)]
 
 
 """ ------------------------------------------------ Script Module ------------------------------------------------"""
-
+# Place for dictionaries #
 df = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
-#prediction = get_prediction(text=text, dataframe=df, prediction=sub_topic)
+
