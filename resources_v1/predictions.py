@@ -31,19 +31,19 @@ class Prediction_v1(Resource):
         json_data = request.get_json(force=True)
         text = json_data['text']
 
-        prediction_topic = get_prediction(text=text, dataframe=df, prediction=topic)
+        prediction_topic = get_prediction(text=text, dataframe=df_topic, prediction=topic)
 
         if prediction_topic == 'TEMATICA - HOMOLOGACION':
-            prediction_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic_homologacion)
+            prediction_subtopic = get_prediction(text=text, dataframe=df_topic, prediction=sub_topic_homologacion)
         else:
-            prediction_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic_pqr)
+            prediction_subtopic = get_prediction(text=text, dataframe=df_topic, prediction=sub_topic_pqr)
 
         if prediction_topic == 'TEMATICA - HOMOLOGACION' and prediction_subtopic == 'SUBTEMATICA - EQUIPO BLOQUEADO':
             topic_form = 'EQUIPO BLOQUEADO'
         else:
             topic_form = 'PETICION POR FORMULARIO'
 
-        prediction_sub_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_subtopic)
+        prediction_sub_subtopic = get_prediction(text=text, dataframe=df_topic, prediction=sub_subtopic)
 
         return jsonify({'prediction': [{'text': text,
                                         'topic_form': topic_form,
