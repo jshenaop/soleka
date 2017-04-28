@@ -15,6 +15,7 @@ import sys
 from decimal import Decimal
 from fractions import Fraction
 
+import numpy as np
 import pandas as pd
 from nltk import word_tokenize, WordNetLemmatizer
 from nltk.corpus import stopwords
@@ -89,15 +90,16 @@ def get_prediction(text, dataframe, prediction):
             return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
 
     def get_topic_score(dataframe, indexes, column_name):
+        probability_list = []
         vocabulary = dataframe.shape[0]
         frecuency_count = dataframe[column_name].sum()
         divisor = frecuency_count + vocabulary
-        print(divisor)
 
-        value = Decimal(0)
         for index in indexes:
-            value += Decimal((dataframe.ix[index, dataframe.columns.get_loc(column_name)] + 1) / (divisor))
-        return value
+            value = ((dataframe.ix[index, dataframe.columns.get_loc(column_name)] + 1) / (divisor))
+            probability_list.append(value)
+            score = np.log(np.sum(np.exp(probability_list)))
+        return score
 
     def get_result(topic_scores):
         if topic_scores.count(max(topic_scores)) > 1:
@@ -119,18 +121,6 @@ def get_prediction(text, dataframe, prediction):
                 pass
         score = get_topic_score(dataframe=dataframe, indexes=indexes, column_name=category)
         topic_scores.append(score)
-    print(prediction)
-    print(topic_scores)
-    print(topic_scores.index(min(topic_scores)))
-
-
-    if Decimal(topic_scores[0]) > Decimal(topic_scores[1]):
-        print('A')
-    if Decimal(topic_scores[0]) < Decimal(topic_scores[1]):
-        print('B')
-    if Decimal(topic_scores[0]) == Decimal(topic_scores[1]):
-        print('C')
-
 
 # Decision tree
     try:
@@ -167,4 +157,4 @@ if __name__ == '__main__':
 
 if __name__ != '__main__':
 
-    df_topic = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
+    df_topic = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic_v2.csv', sep=',', parse_dates=[0], header=0, encoding='latin1')

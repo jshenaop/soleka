@@ -4,7 +4,7 @@ from flask import jsonify, Blueprint, request
 from flask_restful import Resource, Api, reqparse, inputs
 from flask_restful.utils import cors
 
-from analytics.topic_prediction_classification import df
+from analytics.topic_prediction_classification import df_topic
 from analytics.topic_prediction_classification import topic, sub_topic_homologacion, sub_topic_pqr, sub_subtopic
 from analytics.topic_prediction_classification import get_prediction
 
