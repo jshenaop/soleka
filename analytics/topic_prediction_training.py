@@ -66,7 +66,8 @@ if __name__ == '__main__':
             header = column + ' - ' + category
             headers.append(header)
 
-    dataframe_cvs = pd.DataFrame(data=0, index=all_features_list, columns=headers)
+    dataframe_csv = pd.DataFrame(data=0, index=all_features_list, columns=headers)
+
     for column in islice(dataframe.columns, 1, None):
         for category in dataframe[column].unique():
 
@@ -82,34 +83,10 @@ if __name__ == '__main__':
                 try:
                     value = (filtered_features[feature])
                     classify_dictionary[feature][column][category] = value
-                    dataframe_cvs.set_value(feature, header, value)
+                    dataframe_csv.set_value(feature, header, value)
                 except KeyError:
                     value = 0
                     classify_dictionary[feature][column][category] = value
-                    dataframe_cvs.set_value(feature, header, value)
+                    dataframe_csv.set_value(feature, header, value)
 
-    dataframe_cvs.to_csv('FRECUENCY_SET/frecuency_topic_v2.csv', sep=',')
-
-    # with open('FRECUENCY_SET/frecuency_topic_with_pivot.csv', 'w', encoding="utf-8") as csv_classifier:
-    #     csv = csv.writer(csv_classifier, delimiter='\t')
-    #
-    #     for column in islice(dataframe.columns, 1, None):
-    #         for category in dataframe[column].unique():
-    #
-    #             header = column + ' - ' + category
-    #             headers.append(header)
-    #
-    #             filtered_dataframe = dataframe.loc[dataframe[column] == category]
-    #
-    #             filtered_text = get_corpus(dataframe=filtered_dataframe)
-    #             filtered_features = get_features(filtered_text, 'bow')
-    #
-    #             for feature in all_features:
-    #                     try:
-    #                         value = (filtered_features[feature])
-    #                         classify_dictionary[feature][column][category] = value
-    #                         csv.writerow([feature, header, value])
-    #                     except KeyError:
-    #                         value = 0
-    #                         classify_dictionary[feature][column][category] = value
-    #                         csv.writerow([feature, header, value])
+    dataframe_csv.to_csv('FRECUENCY_SET/frecuency_topic_v2.csv', sep=',')

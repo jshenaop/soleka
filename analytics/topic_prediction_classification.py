@@ -1,8 +1,11 @@
 # coding=utf8
 
 import os
+import sys
 import random
 import csv
+from decimal import Decimal
+from fractions import Fraction
 from collections import Counter
 
 import nltk
@@ -10,15 +13,9 @@ from nltk import word_tokenize, WordNetLemmatizer
 from nltk.corpus import stopwords
 from nltk import NaiveBayesClassifier, classify
 
-import csv
-import sys
-from decimal import Decimal
-from fractions import Fraction
-
 import numpy as np
 import pandas as pd
-from nltk import word_tokenize, WordNetLemmatizer
-from nltk.corpus import stopwords
+
 
 """ ---------------------------------------------- Stop Words Module ----------------------------------------------"""
 
@@ -156,5 +153,10 @@ if __name__ == '__main__':
     print(prediction)
 
 if __name__ != '__main__':
-
-    df_topic = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic_v2.csv', sep=',', parse_dates=[0], header=0, encoding='latin1')
+    # Load dictionaries
+    try:
+        df_topic = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic_v2.csv', sep=',', parse_dates=[0], header=0,
+                               encoding='latin1')
+    except FileNotFoundError:
+        df_topic = pd.read_csv('./FRECUENCY_SET/frecuency_topic_v2.csv', sep=',', parse_dates=[0], header=0,
+                               encoding='latin1')
