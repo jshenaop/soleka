@@ -1,4 +1,4 @@
-id,palabra,masculino,femenino
+ID,PALABRA,MASCULINO,FEMENINO
 8031,perri,0,2
 1724,empezar,15,27
 2781,siguen,30,25
@@ -8101,7 +8101,8 @@ id,palabra,masculino,femenino
 8376,copias,1,1
 8368,dejarlas,0,3
 8383,robben,1,0
-8384,"contigo",1,0
+8384,"contigo
+",1,0
 8385,desconecta,1,0
 8386,rectafinal,1,0
 8354,riendo,3,6
@@ -12569,15 +12570,20 @@ id,palabra,masculino,femenino
 12806,fastcompany,0,2
 12820,taisen,0,1
 12821,deshimaru,0,1
-34596,"wiiigracias",1,0
-34597,"ibague",1,0
+34596,"wiii
+gracias",1,0
+34597,"
+
+ibague",1,0
 12827,camarabaq,0,0
 12828,tedxvillacampes,0,0
 12829,cutlernutritioncolombia,0,0
 12822,base,11,8
 34600,regresamos,1,1
 12833,repostapphelados,0,0
-34598,"fuimosletsgoibague",1,0
+34598,"fuimos
+
+letsgoibague",1,0
 12819,series,3,2
 34588,bgotour,4,0
 12837,repostappprotein,0,0
@@ -12585,7 +12591,9 @@ id,palabra,masculino,femenino
 12840,jodstam,0,0
 12841,recipe,0,0
 12850,amantes,5,2
-34599,"wiiiiiibgotour",1,0
+34599,"wiiiiii
+
+bgotour",1,0
 12844,legday,0,0
 12845,dontskiplegday,0,0
 12847,nodaysoff,0,0
@@ -12612,7 +12620,9 @@ id,palabra,masculino,femenino
 12852,vitaminas,0,1
 12855,imprescindible,1,1
 12831,saludables,0,0
-34604,"llegadobgotour",1,0
+34604,"llegado
+
+bgotour",1,0
 34605,letsgoibg,1,0
 12835,almendras,0,1
 34606,suit,1,0
@@ -12620,7 +12630,9 @@ id,palabra,masculino,femenino
 34607,tie,1,0
 12864,conformes,1,1
 12824,crear,18,10
-34608,"nqsquemiedo",1,0
+34608,"nqs
+
+quemiedo",1,0
 34609,puentemasaltodebogota,1,0
 12825,localmenteglobal,0,0
 12866,region,19,2
@@ -12631,7 +12643,9 @@ id,palabra,masculino,femenino
 34611,vacations,1,0
 12823,glutenfree,1,1
 34613,429,1,0
-34614,"pmbacktothefuture2",1,0
+34614,"pm
+
+backtothefuture2",1,0
 12838,anyone,2,2
 34590,dia1,2,1
 12865,representantes,3,2
@@ -13012,7 +13026,8 @@ id,palabra,masculino,femenino
 13176,vamossantafequeremoslacopa,1,0
 13220,volvi,5,4
 13169,cervezas,2,2
-13180,"tambaleatodo",1,0
+13180,"tambalea
+todo",1,0
 13174,golazo,13,7
 13182,corrieron,1,0
 13184,jurguen,1,0
@@ -21826,7 +21841,8 @@ id,palabra,masculino,femenino
 21755,loscaligaris,0,1
 21768,lanzas,1,1
 21758,aush,0,1
-21759,"5a",0,1
+21759,"5
+a",0,1
 21752,adz,0,2
 21712,anahi,2,4
 21762,boniiiiiito,0,1
@@ -34561,7 +34577,9 @@ id,palabra,masculino,femenino
 34524,caraudio,5,5
 34563,thallesrobertoo,4,0
 34616,tower,1,0
-34617,"edificioblue",1,0
+34617,"edificio
+
+blue",1,0
 34618,eljuli,1,0
 34619,tourporbogota,1,0
 34620,bebis,1,0
@@ -36011,7 +36029,8 @@ id,palabra,masculino,femenino
 36120,pedalear,2,0
 36112,tibifirmaaqui,2,1
 36104,confiabilidad,2,0
-36146,"donde",0,1
+36146,"
+donde",0,1
 36157,surprise,1,1
 36148,nandos,0,1
 36161,terminara,0,2
@@ -36430,7 +36449,8 @@ id,palabra,masculino,femenino
 36563,squirrel,0,1
 36601,mons,0,1
 36566,lovermy,0,0
-36596,"rosarioalparquealcalaque",0,1
+36596,"rosarioalparquealcala
+que",0,1
 36567,bite,0,0
 36568,madnesscakefactoryale,0,0
 36569,avergerscake,0,0
@@ -39137,7 +39157,8 @@ id,palabra,masculino,femenino
 39267,inyeccion,1,0
 39268,pezzutig,1,0
 39269,didierchica,1,0
-39270,"conoceran",1,0
+39270,"
+conoceran",1,0
 39271,gobernaren,1,0
 39273,alvaropachecoal,1,0
 39220,quoted,2,0
@@ -44477,7 +44498,9 @@ id,palabra,masculino,femenino
 44656,fantasticaste,1,0
 44657,megareamo,1,0
 44658,mientas,1,0
-44667,"despiertossonadores",0,1
+44667,"despiertos
+
+sonadores",0,1
 44669,julianbakero,0,1
 44670,danessial,0,1
 44671,optimistas,0,1
@@ -47426,7 +47449,8 @@ id,palabra,masculino,femenino
 47638,diadulce,0,0
 47639,bibliotecacompensar,0,0
 47661,miercolesdejazz,1,0
-47662,"los",1,0
+47662,"
+los",1,0
 47663,sfjazzcollectivs,1,0
 47664,michaeljacksons,1,0
 47665,nightfull,1,0
@@ -60383,8 +60407,10 @@ id,palabra,masculino,femenino
 60764,zarrapasroso,0,0
 60766,opinioncriticac,0,0
 60767,juanuribe22,0,0
-60768,"extrafernando",0,0
-60769,"medellincedemocratico",0,0
+60768,"extra
+fernando",0,0
+60769,"medellin
+cedemocratico",0,0
 60770,derramada,0,0
 60771,adormecida,0,0
 60772,autorizo,0,0

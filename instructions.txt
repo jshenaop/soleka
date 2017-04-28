@@ -37,6 +37,9 @@ virtualenv solekaenv
 source solekaenv/bin/activate
 gunicorn soleka:app
 pkill gunicorn
+sudo rm analytics/FRECUENCY_SET/frecuency_topic_without_pivot.csv
+sudo supervisorctl start soleka
+sudo supervisorctl stop soleka
 
 #Flask and Gunicorn
 https://realpython.com/blog/python/kickstarting-flask-on-ubuntu-setup-and-deployment/

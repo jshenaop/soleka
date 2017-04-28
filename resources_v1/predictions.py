@@ -33,12 +33,12 @@ class Prediction_v1(Resource):
 
         prediction_topic = get_prediction(text=text, dataframe=df, prediction=topic)
 
-        if prediction_topic == 'tematica - homologacion':
+        if prediction_topic == 'TEMATICA - HOMOLOGACION':
             prediction_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic_homologacion)
         else:
             prediction_subtopic = get_prediction(text=text, dataframe=df, prediction=sub_topic_pqr)
 
-        if prediction_topic == 'tematica - homologacion' and prediction_subtopic == 'subtematica - equipo bloqueado':
+        if prediction_topic == 'TEMATICA - HOMOLOGACION' and prediction_subtopic == 'SUBTEMATICA - EQUIPO BLOQUEADO':
             topic_form = 'EQUIPO BLOQUEADO'
         else:
             topic_form = 'PETICION POR FORMULARIO'

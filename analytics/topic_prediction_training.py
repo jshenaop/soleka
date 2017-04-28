@@ -12,19 +12,14 @@ from nltk import NaiveBayesClassifier, classify
 
 csv.field_size_limit(500 * 1024 * 1024)
 
-dataframe = pd.read_excel('./analytics/TRAINING_SET/training_topic.xlsx')
-
 """ ---------------------------------------------- Stop Words Module ----------------------------------------------"""
 
 stoplist = stopwords.words('spanish')
 custom_stop_list = [
-    'margin:0px', 'padding:0px', 'body.hmmessage', 'font-size:12pt', 'font-family', 'sans-serif', '<', 'calibri'
-                                                                                                       'font-face',
-    'margin-bottom'
-    '--', '}', '{', '>', ',', '.', ';', ':', '@', ')', '(', '"', '--', '``', ''
+    'margin:0px', 'padding:0px', 'body.hmmessage', 'font-size:12pt', 'font-family', 'sans-serif', '<', 'calibri',
+    'font-face', 'margin-bottom', '--', '}', '{', '>', ',', '.', ';', ':', '@', ')', '(', '"', '--', '``', ''
 ]
 stoplist.extend(custom_stop_list)
-
 
 """ ----------------------------------------------- Functions Module -----------------------------------------------"""
 
@@ -50,21 +45,28 @@ def get_features(text, setting):
 
 
 """ ------------------------------------------------ Script Module ------------------------------------------------"""
+if __name__ == '__main__':
 
-text = get_corpus(dataframe=dataframe)
-all_features = get_features(text, 'bow')
-all_features_list = []
+    dataframe = pd.read_excel('TRAINING_SET/training_topic_v2.xlsx')
 
-for feature in all_features:
-    all_features_list.append(feature)
+    text = get_corpus(dataframe=dataframe)
+    all_features = get_features(text, 'bow')
+    all_features_list = []
 
-dictionary = lambda: defaultdict(dictionary)
-classify_dictionary = dictionary()
-headers = ['PALABRA']
+    for feature in all_features:
+        all_features_list.append(feature)
 
-with open('./analytics/FRECUENCY_SET/frecuency_topic_without_pivot.csv', 'w', encoding="utf-8") as csv_classifier:
-    csv = csv.writer(csv_classifier, delimiter='\t')
+    dictionary = lambda: defaultdict(dictionary)
+    classify_dictionary = dictionary()
+    headers = []
 
+    for column in islice(dataframe.columns, 1, None):
+        for category in dataframe[column].unique():
+
+            header = column + ' - ' + category
+            headers.append(header)
+
+    dataframe_cvs = pd.DataFrame(data=0, index=all_features_list, columns=headers)
     for column in islice(dataframe.columns, 1, None):
         for category in dataframe[column].unique():
 
@@ -77,11 +79,37 @@ with open('./analytics/FRECUENCY_SET/frecuency_topic_without_pivot.csv', 'w', en
             filtered_features = get_features(filtered_text, 'bow')
 
             for feature in all_features:
-                    try:
-                        value = (filtered_features[feature])
-                        classify_dictionary[feature][column][category] = value
-                        csv.writerow([feature, header, value])
-                    except KeyError:
-                        value = 0
-                        classify_dictionary[feature][column][category] = value
-                        csv.writerow([feature, header, value])
+                try:
+                    value = (filtered_features[feature])
+                    classify_dictionary[feature][column][category] = value
+                    dataframe_cvs.set_value(feature, header, value)
+                except KeyError:
+                    value = 0
+                    classify_dictionary[feature][column][category] = value
+                    dataframe_cvs.set_value(feature, header, value)
+
+    dataframe_cvs.to_csv('FRECUENCY_SET/frecuency_topic_v2.csv', sep=',')
+
+    # with open('FRECUENCY_SET/frecuency_topic_with_pivot.csv', 'w', encoding="utf-8") as csv_classifier:
+    #     csv = csv.writer(csv_classifier, delimiter='\t')
+    #
+    #     for column in islice(dataframe.columns, 1, None):
+    #         for category in dataframe[column].unique():
+    #
+    #             header = column + ' - ' + category
+    #             headers.append(header)
+    #
+    #             filtered_dataframe = dataframe.loc[dataframe[column] == category]
+    #
+    #             filtered_text = get_corpus(dataframe=filtered_dataframe)
+    #             filtered_features = get_features(filtered_text, 'bow')
+    #
+    #             for feature in all_features:
+    #                     try:
+    #                         value = (filtered_features[feature])
+    #                         classify_dictionary[feature][column][category] = value
+    #                         csv.writerow([feature, header, value])
+    #                     except KeyError:
+    #                         value = 0
+    #                         classify_dictionary[feature][column][category] = value
+    #                         csv.writerow([feature, header, value])

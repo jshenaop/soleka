@@ -1,4 +1,4 @@
-id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
+ID,PALABRA,E_10_18,E_19_24,E_25_34,E_35_44,E_45_54,OTRO
 8031,perri,0,1,1,0,0,0
 1724,empezar,10,16,9,3,4,11
 2781,siguen,8,11,12,16,8,17
@@ -8101,7 +8101,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 8376,copias,1,0,0,1,0,2
 8368,dejarlas,2,0,1,0,0,0
 8383,robben,1,0,0,0,0,0
-8384,"contigo",1,0,0,0,0,0
+8384,"contigo
+",1,0,0,0,0,0
 8385,desconecta,1,0,0,0,0,0
 8386,rectafinal,1,0,0,0,0,0
 8354,riendo,2,4,2,0,1,0
@@ -12569,15 +12570,20 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 12806,fastcompany,0,2,0,0,0,0
 12820,taisen,0,1,0,0,0,0
 12821,deshimaru,0,1,0,0,0,0
-34596,"wiiigracias",0,1,0,0,0,0
-34597,"ibague",0,1,0,0,0,0
+34596,"wiii
+gracias",0,1,0,0,0,0
+34597,"
+
+ibague",0,1,0,0,0,0
 12827,camarabaq,0,0,0,0,0,1
 12828,tedxvillacampes,0,0,0,0,0,1
 12829,cutlernutritioncolombia,0,0,0,0,0,1
 12822,base,2,2,6,3,6,10
 34600,regresamos,0,1,0,0,1,1
 12833,repostapphelados,0,0,0,0,0,1
-34598,"fuimosletsgoibague",0,1,0,0,0,0
+34598,"fuimos
+
+letsgoibague",0,1,0,0,0,0
 12819,series,2,2,1,0,0,3
 34588,bgotour,0,4,0,0,0,0
 12837,repostappprotein,0,0,0,0,0,1
@@ -12585,7 +12591,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 12840,jodstam,0,0,0,0,0,1
 12841,recipe,0,0,0,0,0,1
 12850,amantes,4,0,0,3,0,4
-34599,"wiiiiiibgotour",0,1,0,0,0,0
+34599,"wiiiiii
+
+bgotour",0,1,0,0,0,0
 12844,legday,0,0,0,0,0,1
 12845,dontskiplegday,0,0,0,0,0,1
 12847,nodaysoff,0,0,0,0,0,1
@@ -12612,7 +12620,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 12852,vitaminas,0,0,1,0,0,1
 12855,imprescindible,0,1,0,1,0,1
 12831,saludables,0,0,0,0,0,3
-34604,"llegadobgotour",0,1,0,0,0,0
+34604,"llegado
+
+bgotour",0,1,0,0,0,0
 34605,letsgoibg,0,1,0,0,0,0
 12835,almendras,0,0,1,0,0,1
 34606,suit,0,1,0,0,0,0
@@ -12620,7 +12630,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 34607,tie,0,1,0,0,0,0
 12864,conformes,0,0,1,1,0,2
 12824,crear,3,10,7,6,2,13
-34608,"nqsquemiedo",0,1,0,0,0,0
+34608,"nqs
+
+quemiedo",0,1,0,0,0,0
 34609,puentemasaltodebogota,0,1,0,0,0,0
 12825,localmenteglobal,0,0,0,0,0,10
 12866,region,1,1,10,5,4,18
@@ -12631,7 +12643,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 34611,vacations,0,1,0,0,0,0
 12823,glutenfree,0,1,0,1,0,0
 34613,429,0,1,0,0,0,0
-34614,"pmbacktothefuture2",0,1,0,0,0,0
+34614,"pm
+
+backtothefuture2",0,1,0,0,0,0
 12838,anyone,1,1,1,0,1,1
 34590,dia1,0,2,1,0,0,0
 12865,representantes,0,0,3,2,0,3
@@ -13012,7 +13026,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 13176,vamossantafequeremoslacopa,1,0,0,0,0,0
 13220,volvi,2,2,4,1,0,0
 13169,cervezas,2,0,0,2,0,1
-13180,"tambaleatodo",0,1,0,0,0,0
+13180,"tambalea
+todo",0,1,0,0,0,0
 13174,golazo,1,8,8,3,0,1
 13182,corrieron,0,1,0,0,0,0
 13184,jurguen,0,1,0,0,0,0
@@ -21826,7 +21841,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 21755,loscaligaris,0,1,0,0,0,0
 21768,lanzas,1,0,0,1,0,0
 21758,aush,0,1,0,0,0,0
-21759,"5a",0,1,0,0,0,0
+21759,"5
+a",0,1,0,0,0,0
 21752,adz,0,1,1,0,0,0
 21712,anahi,2,2,2,0,0,1
 21762,boniiiiiito,0,1,0,0,0,0
@@ -34561,7 +34577,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 34524,caraudio,0,10,0,0,0,0
 34563,thallesrobertoo,0,1,0,3,0,0
 34616,tower,0,1,0,0,0,0
-34617,"edificioblue",0,1,0,0,0,0
+34617,"edificio
+
+blue",0,1,0,0,0,0
 34618,eljuli,0,1,0,0,0,0
 34619,tourporbogota,0,1,0,0,0,0
 34620,bebis,1,0,0,0,0,0
@@ -36011,7 +36029,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 36120,pedalear,0,0,0,2,0,1
 36112,tibifirmaaqui,0,0,2,1,0,0
 36104,confiabilidad,0,0,2,0,0,0
-36146,"donde",1,0,0,0,0,0
+36146,"
+donde",1,0,0,0,0,0
 36157,surprise,1,0,0,1,0,0
 36148,nandos,1,0,0,0,0,0
 36161,terminara,1,0,0,0,1,0
@@ -36430,7 +36449,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 36563,squirrel,0,0,1,0,0,1
 36601,mons,0,1,0,0,0,5
 36566,lovermy,0,0,0,0,0,1
-36596,"rosarioalparquealcalaque",0,1,0,0,0,0
+36596,"rosarioalparquealcala
+que",0,1,0,0,0,0
 36567,bite,0,0,0,0,0,2
 36568,madnesscakefactoryale,0,0,0,0,0,1
 36569,avergerscake,0,0,0,0,0,1
@@ -39137,7 +39157,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 39267,inyeccion,0,0,1,0,0,0
 39268,pezzutig,0,0,1,0,0,0
 39269,didierchica,0,0,0,1,0,0
-39270,"conoceran",0,0,0,1,0,0
+39270,"
+conoceran",0,0,0,1,0,0
 39271,gobernaren,0,0,0,1,0,0
 39273,alvaropachecoal,0,0,0,1,0,0
 39220,quoted,0,0,0,2,0,0
@@ -44477,7 +44498,9 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 44656,fantasticaste,0,0,0,1,0,0
 44657,megareamo,0,0,0,1,0,0
 44658,mientas,0,0,0,1,0,0
-44667,"despiertossonadores",0,0,0,0,1,0
+44667,"despiertos
+
+sonadores",0,0,0,0,1,0
 44669,julianbakero,0,0,0,0,1,0
 44670,danessial,0,0,0,0,1,0
 44671,optimistas,0,0,0,0,1,0
@@ -47426,7 +47449,8 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 47638,diadulce,0,0,0,0,0,1
 47639,bibliotecacompensar,0,0,0,0,0,1
 47661,miercolesdejazz,0,0,0,1,0,0
-47662,"los",0,0,0,1,0,0
+47662,"
+los",0,0,0,1,0,0
 47663,sfjazzcollectivs,0,0,0,1,0,0
 47664,michaeljacksons,0,0,0,1,0,0
 47665,nightfull,0,0,0,1,0,0
@@ -60383,8 +60407,10 @@ id,palabra,e_10_18,e_19_24,e_25_34,e_35_44,e_45_54,otro
 60764,zarrapasroso,0,0,0,0,0,1
 60766,opinioncriticac,0,0,0,0,0,1
 60767,juanuribe22,0,0,0,0,0,1
-60768,"extrafernando",0,0,0,0,0,1
-60769,"medellincedemocratico",0,0,0,0,0,1
+60768,"extra
+fernando",0,0,0,0,0,1
+60769,"medellin
+cedemocratico",0,0,0,0,0,1
 60770,derramada,0,0,0,0,0,1
 60771,adormecida,0,0,0,0,0,1
 60772,autorizo,0,0,0,0,0,1

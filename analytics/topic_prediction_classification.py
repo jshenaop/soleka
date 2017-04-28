@@ -12,6 +12,8 @@ from nltk import NaiveBayesClassifier, classify
 
 import csv
 import sys
+from decimal import Decimal
+from fractions import Fraction
 
 import pandas as pd
 from nltk import word_tokenize, WordNetLemmatizer
@@ -35,53 +37,45 @@ Buenos días que pena con ustedes pero esta es la tercera vez que realizo esta s
 """
 
 topic = [
-    'tematica - homologacion',
-    'tematica - pqr'
+    'TEMATICA - HOMOLOGACION',
+    'TEMATICA - PQR'
 ]
 
 sub_topic_homologacion = [
-    'subtematica - aclaracion respuesta no coincide marca/modelo',
-    'subtematica - formulario: al parecer cuenta con un imei alterado',
-    'subtematica - bloqueo/ desbloqueo celulares',
-    'subtematica - complementacion postulacion',
-    'subtematica - consulta de pertinencia',
-    'subtematica - correcion carta de homologacion',
-    'subtematica - cuando los equipos vienen sellados',
-    'subtematica - equipo bloqueado',
-    'subtematica - equipo no homologable vendido por autorizado',
-    'subtematica - equipo no homologable vendido por comercio colombiano',
-    'subtematica - error al marcar *#06#',
-    'subtematica - error en formulario complementacion',
-    'subtematica - formato imagenes',
-    'subtematica - formulario: al parecer cuenta con un imei alterado',
-    'subtematica - imei invalido',
-    'subtematica - link de consulta tramite',
-    'subtematica - nombre comercial vs modelo equipo',
-    'subtematica - problemas con el operador y ya esta homologado',
-    'subtematica - realizar el tramite homologacion',
-    'subtematica - sin fcc y otro certificado'
+    'SUBTEMATICA - SEGUIMIENTO RESPUESTA',
+    'SUBTEMATICA - EQUIPO BLOQUEADO',
+    'SUBTEMATICA - OTROS',
+    'SUBTEMATICA - IMPOSIBILIDAD OBTENER REQUISITOS',
+    'SUBTEMATICA - PROBLEMAS DE REGISTRO',
+    'SUBTEMATICA - REALIZAR EL TRAMITE HOMOLOGACION',
+    'SUBTEMATICA - PETICION POR FORMULARIO',
+    'SUBTEMATICA - EQUIPO NO HOMOLOGABLE VENDIDO POR AUTORIZADO',
+    'SUBTEMATICA - CONSULTA DE PERTINENCIA',
+    'SUBTEMATICA - EQUIPO NO HOMOLOGABLE VENDIDO POR COMERCIO COLOMBIANO',
+    'SUBTEMATICA - CORRECION CARTA DE HOMOLOGACION',
+    'SUBTEMATICA - COMPLEMENTACION POSTULACION'
 ]
 
 sub_topic_pqr = [
-    'subtematica - peticion por formulario'
+    'SUBTEMATICA - PETICION POR FORMULARIO'
 ]
 
 sub_subtopic = [
-    'sub-subtematica - no aplica'
+    'SUB-SUBTEMATICA - NO APLICA'
 ]
 
 gender = [
-    'masculino',
-    'femenino'
+    'MASCULINO',
+    'FEMENINO'
 ]
 
 age = [
-    'e_10_18',
-    'e_19_24',
-    'e_25_34',
-    'e_35_44',
-    'e_45_54',
-    'otro'
+    'E_10_18',
+    'E_19_24',
+    'E_25_34',
+    'E_35_44',
+    'E_45_54',
+    'OTRO'
 ]
 
 
@@ -95,14 +89,18 @@ def get_prediction(text, dataframe, prediction):
             return [lemmatizer.lemmatize(word.lower()) for word in word_tokenize(str(text))]
 
     def get_topic_score(dataframe, indexes, column_name):
-        value = 0
+        vocabulary = dataframe.shape[0]
+        frecuency_count = dataframe[column_name].sum()
+        divisor = frecuency_count + vocabulary
+        print(divisor)
+
+        value = Decimal(0)
         for index in indexes:
-            value += dataframe.ix[index, dataframe.columns.get_loc(column_name)]
+            value += Decimal((dataframe.ix[index, dataframe.columns.get_loc(column_name)] + 1) / (divisor))
         return value
 
     def get_result(topic_scores):
         if topic_scores.count(max(topic_scores)) > 1:
-            print(topic_scores.count(max(topic_scores)))
             return 'Imposible to predict'
         else:
             return topic_scores.index(max(topic_scores))
@@ -112,6 +110,7 @@ def get_prediction(text, dataframe, prediction):
 
     for category in prediction:
         indexes = []
+
         for word in preprocess(text=text):
             try:
                 s = dictionary.index(word)
@@ -120,23 +119,52 @@ def get_prediction(text, dataframe, prediction):
                 pass
         score = get_topic_score(dataframe=dataframe, indexes=indexes, column_name=category)
         topic_scores.append(score)
+    print(prediction)
+    print(topic_scores)
+    print(topic_scores.index(min(topic_scores)))
+
+
+    if Decimal(topic_scores[0]) > Decimal(topic_scores[1]):
+        print('A')
+    if Decimal(topic_scores[0]) < Decimal(topic_scores[1]):
+        print('B')
+    if Decimal(topic_scores[0]) == Decimal(topic_scores[1]):
+        print('C')
 
 
 # Decision tree
-    if prediction == topic:
-        return topic[get_result(topic_scores)]
+    try:
+        if prediction == topic:
+            return topic[get_result(topic_scores)]
+    except TypeError:
+        return 'Imposible to predict'
 
-    if prediction == sub_topic_homologacion:
-        return sub_topic_homologacion[get_result(topic_scores)]
+    try:
+        if prediction == sub_topic_homologacion:
+            return sub_topic_homologacion[get_result(topic_scores)]
+    except TypeError:
+        return 'Imposible to predict'
 
-    if prediction == sub_topic_pqr:
-        return sub_topic_homologacion[get_result(topic_scores)]
+    try:
+        if prediction == sub_topic_pqr:
+            return sub_topic_pqr[get_result(topic_scores)]
+    except TypeError:
+        return 'Imposible to predict'
 
-    if prediction == sub_subtopic:
-        return sub_subtopic[get_result(topic_scores)]
+    try:
+        if prediction == sub_subtopic:
+            return sub_subtopic[get_result(topic_scores)]
+    except TypeError:
+        return 'Imposible to predict'
 
 
 """ ------------------------------------------------ Script Module ------------------------------------------------"""
-# Place for dictionaries #
-df = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
+if __name__ == '__main__':
+    # Load dictionaries
+    df_topic = pd.read_csv('FRECUENCY_SET/frecuency_topic_v2.csv', sep=',', parse_dates=[0], header=0, encoding='latin1')
+    prediction = get_prediction(text=text, dataframe=df_topic, prediction=topic)
+    print(prediction)
 
+if __name__ != '__main__':
+
+    df_topic = pd.read_csv('./analytics/FRECUENCY_SET/frecuency_topic.csv', sep=',', parse_dates=[0], header=0)
