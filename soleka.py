@@ -12,7 +12,7 @@ from templates.templates import home
 
 app = Flask(__name__)
 CORS(app)
-app.register_blueprint(predictions_api_v1, url_prefix='/api/v1', )
+app.register_blueprint(predictions_api_v1, url_prefix='/api/v1')
 
 @app.route('/')
 def index():

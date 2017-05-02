@@ -8,8 +8,13 @@ DATABASE = SqliteDatabase('soleka.sqlite')
 
 class Prediction(Model):
     text = TextField()
+    prediction_topic = CharField()
+    prediction_subtopic = CharField()
+    prediction_sub_subtopic = CharField()
+    gender = CharField()
+    age = CharField()
+    sentiment = CharField()
     datetime = DateTimeField(default=datetime.datetime.now)
-    prediction = CharField()
 
     class Meta:
         database = DATABASE

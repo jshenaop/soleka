@@ -45,6 +45,12 @@ class Prediction_v1(Resource):
 
         prediction_sub_subtopic = get_prediction(text=text, dataframe=df_topic, prediction=sub_subtopic)
 
+        models.Prediction.create(text=text, prediction_topic=prediction_topic,
+                                 prediction_subtopic=prediction_subtopic,
+                                 prediction_sub_subtopic=prediction_sub_subtopic,
+                                 #gender=gender, age=age, sentiment=sentiment
+                                 )
+
         return jsonify({'prediction': [{'text': text,
                                         'topic_form': topic_form,
                                         'topic': prediction_topic, 'sub_topic': prediction_subtopic, 'sub_subtopic': prediction_sub_subtopic,
