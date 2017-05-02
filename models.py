@@ -11,9 +11,9 @@ class Prediction(Model):
     prediction_topic = CharField()
     prediction_subtopic = CharField()
     prediction_sub_subtopic = CharField()
-    gender = CharField()
-    age = CharField()
-    sentiment = CharField()
+    gender = CharField(default='')
+    age = CharField(default='')
+    sentiment = CharField(default='')
     datetime = DateTimeField(default=datetime.datetime.now)
 
     class Meta:
