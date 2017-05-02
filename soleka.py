@@ -22,4 +22,3 @@ if __name__ == '__main__':
     models.initilize()
     #app.run(host=config.HOST)
     app.run(debug=config.DEBUG, host=config.HOST)
-    #app.run(debug=config.DEBUG, host=config.HOST, port=config.PORT)
