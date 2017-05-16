@@ -1,6 +1,6 @@
 # coding=utf8
 
-from flask import Flask
+from flask import Flask, render_template
 from flask_restful.utils import cors
 from flask_cors import CORS, cross_origin
 
@@ -16,7 +16,8 @@ app.register_blueprint(predictions_api_v1, url_prefix='/api/v1')
 
 @app.route('/')
 def index():
-    return home
+    return render_template("main.html")
+
 
 if __name__ == '__main__':
     models.initilize()

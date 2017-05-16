@@ -89,4 +89,4 @@ ENV/
 .ropeproject
 
 # Ignore the default SQLite database.
-.sqlite
+*.sqlite
